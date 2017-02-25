@@ -18,7 +18,7 @@
     <script type="text/javascript" src="js/jquery-ui-1.10.3.js"></script>
     <script src="assets/js/iscroll-zoom.js"></script>
     <script src="assets/js/jquery.slidemenu.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/index1.js"></script>
 
     <script>
 
@@ -33,31 +33,8 @@
             }
         }
     </script>
-  
+
     <style>
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted black;
-        }
-
-            .tooltip .tooltiptext {
-                visibility: hidden;
-                width: 120px;
-                background-color: black;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 5px 0;
-                /* Position the tooltip */
-                position: absolute;
-                z-index: 1;
-            }
-
-            .tooltip:hover .tooltiptext {
-                visibility: visible;
-            }
-
         .wrapper {
             position: absolute;
             z-index: 1;
@@ -191,7 +168,7 @@
             <img id="on" src="assets/img/green.gif" alt="Online" class="ui-btn-left alert-imgOn activeImg" style="display: none">
             <img id="img_lnk_back" src="assets/img/back.png" alt="Back" class="ui-btn-left alert-imgOn" style="display: none; margin-left: 20px; cursor: pointer;">
             <a id="lnk_login" href="#Login" data-rel="popup" data-transition="flip" data-position-to="window" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-user ui-nodisc-icon ui-alt-icon ui-btn-right " style="background-color: white; display: none;">Login</a>
-            <a id="lnk_logout" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-power ui-nodisc-icon ui-alt-icon ui-btn-right" style="background-color: white; display: none;" onclick="logout()">Logout</a>
+            <a id="lnk_logout" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-power ui-nodisc-icon ui-alt-icon ui-btn-right" style="background-color: white; display: none;" onclick="logout('1')">Logout</a>
             <h2 id="heading">TiaERP@App</h2>
         </div>
         <div role="main" id="Homepage">
@@ -203,9 +180,10 @@
                         <li class="menu-item" title="SETTING" id="li-setting">
                             <div class="menu-header">
                                 <div class="menu-icon">
-                                    <i class="fa fa-cog"></i>
+                                    <i class="fa">
+                                        <img src="assets/img/mnuSETTING.png" style='width: 9vmin;' /></i>
                                 </div>
-                                <div class="menu-content tooltip">
+                                <div class="menu-content">
                                     <span>SETTING</span>
                                 </div>
                                 <div class="menu-close">
@@ -215,37 +193,22 @@
                             <div class="menu-body">
                                 <center>
                         <br />
-                             <ul data-role="listview" style="width:70%"  class="ui-listview" id="setting-menu">
-                                 <li onclick="GetAppUserInfo();" class='ui-li-has-icon ui-first-child' ><a href="#appSetting-div"  data-transition="flip" style='background-color:#999; color:white;' class='ui-btn'><img style='margin-top:-7px;' src='assets/img/cog2.png' alt='USA' class='ui-li-icon'>App Setting</a></li>
+                             <ul data-role="listview" style="width:85%"  class="ui-listview" id="setting-menu">
+                                 <li onclick="GetAppUserInfo();" class='ui-li-has-icon ui-first-child' ><a href="#appSetting-div"  data-transition="flip" style='background-color:#999; color:white;' class='ui-btn'><img style='margin-top:-7px;' src='assets/img/cog2.png'  alt='USA' class='ui-li-icon'>App Setting</a></li>
                                  <!--<li  class='ui-li-has-icon ui-first-child' ><a href="#DisplaySetting"   data-transition="flip" style='background-color:#999; color:white;' class='ui-btn'><img style='margin-top:-7px;' src='assets/img/cog2.png' alt='USA' class='ui-li-icon'>Display Setting</a></li>-->
                              </ul>
                     </center>
                             </div>
                         </li>
 
-                        <li class="menu-item" id="li3" onclick="exitAppMenu()" style='position: absolute; top: 46px;'>
-                            <div class="menu-header">
-                                <div class="menu-icon">
-                                    <i class="fa fa-sign-out"></i>
-                                </div>
-                                <div class="tooltip">
-                                    Exit<span class="tooltiptext">Exit</span>
-
-                                </div>
-                                <div class="menu-close"><i class="fa fa-times"></i></div>
-                            </div>
-                        </li>
-
-                        <li class="menu-item" id="t&d" onclick="termscondition()" style='position: absolute; top: 15vmin;'>
+                        <li class="menu-item" id="li3" onclick="exitAppMenu()" style='position: absolute; top: 15vmin;'>
                             <div class="menu-header">
                                 <div class="menu-icon">
                                     <i class="fa">
-                                        <img src='assets/img/menu/TERM AND CONDITION.png' style='width: 10vmin;' /></i>
-
+                                        <img src='assets/img/mnuEXIT.png' style='width: 9vmin;' /></i>
                                 </div>
-                                <div class="menu-content tooltip"><span class="tooltiptext">Terms and Condition</span> </div>
-
-
+                                <div class="menu-content"><span>Exit</span> </div>
+                                <div class="menu-close"><i class="fa fa-times"></i></div>
                             </div>
                         </li>
 
@@ -254,6 +217,8 @@
 
             </div>
 
+            <br />
+       
 
             <!--<a id="setting_a" onclick="SettingWind()" style="position: fixed; left: 5px; top: 60px;">
                 <img src="assets/img/wrench.png" style="width: 25px; height: 25px; padding: 7px; background-color: #1390cf; border-radius: 20px" /></a>
@@ -269,7 +234,6 @@
                             <br />
                             <br />
                             Visit: <a href="www.goyalonline.com" onclick="Reset()">www.goyalonline.com </a>
-                            <a href ="www/index.html" onclick ="loadhome()">home page</a>
                         </p>
 
 
@@ -313,8 +277,12 @@
                             <img src="assets/img/User.png" alt="jQuery Mobile" style="width:80px;height:80px;">
                             <input type="text" name="UserNmae" id="UserNmae" value="" placeholder="User Name" data-theme="a" >
                             <input type="password" name="Pass" id="Pass" value="" placeholder="Password" data-theme="a" >
+                            <label style="margin-top:0px;padding-left:2px;font-weight:normal">
+                                <input type="checkbox" name="checkbox-0" id="chkRemPass">Stay singed in
+                            </label>
                             <div id="div-btn-login" class="ui-btn ui-input-btn ui-corner-all ui-shadow">OK<input type="button" value="OK"  style="height:40px" onclick="login()"></div>
-                            <div class="msgDiv">
+                            
+                            <div class="msgDiv" style="margin-top:-13vmin;">
                                 <center>
                                     <p id="LoginMsg" class="msgContent">
                                     </p>
@@ -335,17 +303,12 @@
         </div>
     </div>
 
-    <div data-role="page" id="Item-cart" data-title="Inbox" class="jqm-demos">
-        <div data-role="header" data-position="fixed" data-theme="true">
+    <div data-role="page" id="Item-cart" class="jqm-demos">
+        <div data-role="header" data-position="fixed" data-theme="true" class="jqm-header">
             <h1 style="color: white;">Cart</h1>
-            <img src="assets/img/green.gif" alt="Online" class="ui-btn-left alert-imgOn activeImg">
-            <div class="ui-btn-right">
-                <a href="#Item-Info-Search" data-transition="flip">
-                    <div class="ui-btn ui-input-btn ui-corner-all ui-shadow " style="background: #1390cf" onclick="fun_nextItem()">
-                        <img id="Add-item" src="assets/img/plus.png" alt="Add Item">
-                    </div>
-                </a>
-            </div>
+            <img src="assets/img/green.gif" alt="Online" class="ui-btn-right alert-imgOn activeImg">
+            <a onclick="fun_nextItem()" data-transition="flip" data-icon="plus" data-iconpos="notext" style="background-color: white;">Add</a>
+
         </div>
         <!-- /header -->
         <div role="main" class="ui-content">
@@ -365,7 +328,17 @@
             </div>
             <div id="Item-grid-table">
                 <center>
-                    <p id="itm-cnt" style="margin-top:-8px;"></p>
+                    <p id="itm-cnt" style="margin-top:-8px;margin-bottom:0px;"></p>
+                    <table style="width:90%" id="cart-tbl-amt">
+                        <tr>
+                            <td><label>GrossAmt</label></td>
+                            <td style="float:right"><label id="cart-grs" style="color:#1390cf;margin-right:1vmin"></label></td>
+                            <td><label>NetAmt</label></td>
+                            <td style="float:right"><label id="cart-net" style="color:#1390cf"></label></td>
+                        </tr>
+                    </table>
+                    <label id="cart-total-amt" style="color:#1390cf;margin-top:5px;"></label>
+                    <img alt="Prescription" id="order_pre" style="display:none;width:150px;height:150px;" src="icon.png"/>
                 </center>
                 <div data-theme="b" class="my-page" style="margin-top: -32px;">
 
@@ -377,6 +350,12 @@
                     </div>
                     <div role="main" class="ui-content" style="overflow-x: visible; width: 90%" id="grid_Sale">
                         <ul data-role="listview" data-inset="true" id="Itm_GridSale" class="touch" data-icon="false" data-split-icon="delete"></ul>
+                    </div>
+                    <div role="main" class="ui-content" style="overflow-x: visible; width: 90%" id="grid_QTTN">
+                        <ul data-role="listview" data-inset="true" id="Itm_GridQTTN" class="touch" data-icon="false" data-split-icon="delete"></ul>
+                    </div>
+                    <div role="main" class="ui-content" style="overflow-x: visible; width: 90%" id="grid_QTNW">
+                        <ul data-role="listview" data-inset="true" id="Itm_GridQTNW" class="touch" data-icon="false" data-split-icon="delete"></ul>
                     </div>
                     <table class="ui-content" style="margin-top: -30px; margin-left: 10px; padding: 0; width: 90%;">
                         <tr>
@@ -526,11 +505,13 @@
         </div>
 
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-transition="flip" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
+            <a data-icon="check" data-iconpos="notext" onclick="Save()" class="footer-img">Save</a>
             <a data-icon="action" data-iconpos="notext" class="footer-img" onclick="fun_cancel()">exit</a>
             <!--<a href="#invoice-item-btn2-body" data-rel="popup" data-transition="flip" data-position-to="window" data-icon="carat-r" data-iconpos="notext" class="footer-img">next</a>-->
-            <a href="#div-Detail-Ord" data-icon="eye" data-iconpos="notext" style="float: right;" class="footer-img" onclick="SetInvoiceDtl()">Back</a>
+            <!--<a href="#div-Detail-Ord" data-icon="eye" data-iconpos="notext" style="float: right;" class="footer-img" onclick="SetInvoiceDtl()">Back</a>-->
+            <a onclick="BackButton()" data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img">next</a>
         </div>
     </div>
 
@@ -549,6 +530,10 @@
         <div role="main" class="ui-content">
             <div class="body-with-shadow">
                 <br />
+                <center>
+                    <label id="itm-partName"></label>
+                    <p style="margin:0px;padding:0px;" id="itm-partAdd"></p>
+                </center>
                 <div id="item-search-body">
                     <label class="msgText hide" id="msgText2">No Record Found...</label>
                     <label>Item Name</label>
@@ -571,8 +556,9 @@
             </div>
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
+            <a data-icon="check" data-iconpos="notext" onclick="Save()" class="footer-img">Save</a>
             <a data-rel="popup" data-position-to="window" href="#div-party" data-transition="flip" data-icon="user" data-iconpos="notext" class="footer-img"></a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
             <a data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img" onclick="fun_showCart()">next</a>
@@ -607,7 +593,7 @@
                     <label id="lblItmMRP" style="float: right; background-color: #137ab0; color: white; padding: 3px;"></label>
                     <label id="lblItmName" style="color: #137ab0; font-weight: bold"></label>
                     <label id="PackExp" style="margin-top: -6px;"></label>
-                    <table style="width: 100%; border-collapse: collapse;" cellpadding="0">
+                    <table style="width: 100%; display: inline-block;" cellpadding="0">
                         <tr style="height: 10px;">
                             <td>Rate:
                             </td>
@@ -617,7 +603,7 @@
                             <td id="td-lblstk">
                                 <p>Total Stock:</p>
                             </td>
-                            <td style="text-align: right;" id="td-lblstkval">
+                            <td id="td-lblstkval" style="text-align:right">
                                 <label id="lblItmstk"></label>
                             </td>
 
@@ -628,12 +614,12 @@
                             <td style="text-align: center;">
                                 <label id="lblItmBtch"></label>
                             </td>
-                            <td>
-                                <div class="ui-corner-all " style="background-color: #137ab0; text-align: center; cursor: pointer; padding: 5px; margin-left: 10px;" onclick="fun_ShowChangeList()">
+                            <td colspan="2">
+                                <div class="ui-corner-all " style="background-color: #137ab0; width: 20vw; text-align: center; cursor: pointer; padding: 5px;  float: right" onclick="fun_ShowChangeList()">
                                     <img src="assets/img/loop31.png" alt="Change Batch" />
                                 </div>
                             </td>
-                            <td></td>
+                            
                         </tr>
                         <tr id="row-qty-purchSz">
                             <td colspan="3">
@@ -643,13 +629,21 @@
                                 <label id="lblItmPurSz"></label>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Genric:
+
+                        <tr id="rowBxSz">
+                            <td>Bx Sz:
                             </td>
                             <td colspan="3">
-                                <a href="#altITem" data-transition="slidedown" onclick="SubstitudeItemList()" id="lblContent" style="margin-left: 5px; width: 70%;"></a>
+                                <label id="lblbxsz" style="padding-left: 10px;"></label>
                             </td>
                         </tr>
+                    </table>
+                   <span> Genric:                            
+                                <a href="#altITem" data-transition="slidedown" onclick="SubstitudeItemList()" id="lblContent" style="margin-left: 5px; width: 80%; word-wrap: break-word; display: inline-block;"></a>
+                       </span>
+
+
+                    <table style="width: 100%; display: inline-block;" cellpadding="0">
                         <tr id="row-qty">
                             <td>Qty:
                             </td>
@@ -675,13 +669,13 @@
                     <label class="msgText hide" id="msgText0">Enter Quantity...</label>
                     <div class="ui-btn ui-input-btn ui-corner-all ui-shadow " style="background-color: #1390cf; color: #fff; text-decoration: none; font-weight: normal;" id="insert_itemInfo">Add to cart<input type="button" value="Add To Cart" style="height: 40px" onclick="    fun_AddToCart()" id="add-item-cart"></div>
                     <div class="ui-btn ui-input-btn ui-corner-all ui-shadow " style="background-color: #1390cf; color: #fff; text-decoration: none; font-weight: normal;" id="update_itemInfo">Update<input type="button" value="Update" style="height: 40px" onclick="    fun_AddToCart()"></div>
-
+                    <a id="rate_warning" onclick="ReCheckItemRate()" style="display: none; color: red; font-size: 14px;">Selected Item Rate Is 0.00 Rs. Wish To ReCheck?</a>
                 </div>
                 <br />
             </div>
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" class="footer-img" style="float: left;">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" class="footer-img" style="float: left;">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a data-icon="action" data-iconpos="notext" class="footer-img" onclick="fun_cancel()">exit</a>
             <a data-icon="carat-r" data-iconpos="notext" style="margin: 10px; float: right" class="footer-img" onclick="fun_showCart()">next</a>
@@ -698,7 +692,7 @@
                     <label onclick="fun_showCart()" class="ui-btn-right cart-cnt-lbl" style="display: none; text-indent: 1px; padding: 5px; background-color: #4b4b4b; color: white; border-radius: 19px; font-weight: bold;"></label>
                 </a>
             </div>
-            <h2 style="color: white;">WholeSale Bill</h2>
+            <h2 style="color: white;" id="h_partydiv">WholeSale Bill</h2>
         </div>
         <div role="main" class="ui-content">
             <div class="body-with-shadow">
@@ -709,9 +703,14 @@
                     <label class="msgText hide" id="msgText1">No Record Found...</label>
                     <label>Area Name</label>
                     <input type="text" id="area-srch" placeholder="Enter Area Name..." data-theme="a" data-type="search" onchange="serchtxt_clear(this,'2');" />
-                    <label>Party Name</label>
+                    <label>
+                        Party Name 
+                        <span style="float: right"><a href="#div-partyMst" data-transition="flip" style="background-color: #1390cf; border-radius: 5px; padding: 2vmin">
+                            <img src="assets/img/plus.png" alt="Add Party"></a></span>
+                    </label>
                     <input type="text" id="party-srch" placeholder="Enter Party Name..." data-theme="a" data-type="search" onchange="serchtxt_clear(this,'1');" />
                     <center>
+                        <p style="margin:0px;padding:0px" id="party-srch-add"></p>
                         <div id="div-party-info" class="display-none">
                             <label style="display:inline">Ledger Balance:</label> <label id="lblLdgBal" style="color:#137ab0;font-weight:bold;display:inline">00.00</label>
                         </div>
@@ -739,7 +738,7 @@
         </div>
         <!-- /popup -->
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img" onclick="fun_nextItem()">next</a>
         </div>
@@ -770,7 +769,7 @@
         </div>
         <!-- /popup -->
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a id="nxt-partysearch" data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img hide" onclick="fun_nextItem()">next</a>
         </div>
@@ -780,11 +779,51 @@
 
         <div data-role="header" data-position="fixed" class="jqm-header">
             <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="margin-left: 10px; background-color: white;">Back</a>
-            <img id="Img8" src="assets/img/green.gif" alt="Online" class="ui-btn-right alert-imgOn activeImg">
-            <h2 id="heading" style="color: white;">Party Ledger</h2>
+            <!--<img id="Img8" src="assets/img/green.gif" alt="Online" class="ui-btn-right alert-imgOn activeImg">-->
+            <h2 id="heading" style="color: white;">Party Ledger</h2>            
+            <a onclick="SetEmailDefaultValue()"  data-icon="mail" data-iconpos="notext" style="margin-right: 10px; background-color: white;" href="#Mail-Body" data-rel="popup" data-transition="slidedown">Back</a>
         </div>
         <center>
             <div style="width:92%">
+                <div id="Mail-Body" style="padding:10px" data-role="popup" data-theme="a">
+                    <center>
+                        <table>
+                            <tr>
+                                <td>
+                                    To:
+                                </td>
+                                <td>
+                                    <input type="text" data-theme="a" id="txt_ldgToEmail" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Subject:
+                                </td>
+                                <td>
+                                    <input type="text" data-theme="a" id="txt_ldgSubject" value="Party Ledger" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Body:
+                                </td>
+                                <td>
+                                    <textarea style="height:60px" id="txt_ldgBody">
+                                    </textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Footer/Sign</td>
+                                <td>
+                                    <textarea id="txt_ldgFooter"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <input onclick="SendLedgerEmail()" type="button" value="OK" style="background: #1390cf;padding:5px 25px 5px 25px; color:white;border:none;cursor:pointer;"  />
+                    </center>
+                </div>
                 <div data-role="popup" id="ldgRpt_para" data-theme="a">
                     <div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:250px;">
                         <div data-role="collapsible" data-inset="false">
@@ -827,7 +866,7 @@
                     </div><!-- /collapsible set -->
                 </div>
                 <br />
-                <label id="lblPnameldgBal"></label>
+                <label id="lblPnameldgBal" style="margin-top:10vmin;"></label>
                 <label id="lblOPBal"  style="width:40%;color:#137ab0">Op-Bal</label>
                 <a onclick="ShowPartyLdgr()"><div class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-mini" style="background: #1390cf;width:7%;position:absolute;right:5px;top:55px;"> <img src="assets/img/refresh.png" alt="Refresh"></div></a>
                 <a href="#ldgRpt_para" data-rel="popup" data-transition="slidedown"><div class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-mini" style="background: #1390cf;width:7%;position:absolute;left:5px;top:55px;"> <img src="assets/img/paragraph-center.png" alt="Parameter"></div></a>
@@ -870,10 +909,12 @@
                         <center>
                             <div id="party-srch">
                                 <label class="msgText hide" id="msgText3">No Record Found...</label>
-                                <label style="font-weight:bold; margin-left:5px;">Party Name</label>
+                                <label >Party Name 
+                        <span style="float:right"><a href="#div-partyMst" data-transition="flip" style="background-color:#1390cf;border-radius:5px;padding:2vmin" > <img src="assets/img/plus.png" alt="Add Party"></a></span>  </label>
                                 <input type="text" data-type="search" name="user" id="txt-party-pa" value="" placeholder="Party Name" data-theme="a" onchange="serchtxt_clear(this,'5');">
                             </div>
                             <div id="party-srch-body" style="width:90%" class="display-none">
+                                <p style="margin:0px;padding:0px" id="txt-party-pa-add"></p>
                                 <label style="display:inline">Ledger Balance:</label> <label id="lblLdgBal1" style="color:#137ab0;font-weight:bold;display:inline">00.00</label>
                                 <table class="ui-content tbl-btn-nxt-rev" style="margin-left:-8px;width:50%">
                                     <tr>                                        
@@ -947,8 +988,9 @@
             </div>
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
+            <a data-icon="check" data-iconpos="notext" onclick="SaveInvoice('0')" class="footer-img">Save</a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
             <a href="#div-Detail-Invoice" data-icon="eye" data-iconpos="notext" style="float: right;" class="footer-img" onclick="SetInvoiceDtl()">Back</a>
         </div>
@@ -966,10 +1008,15 @@
 
                 <div id="party-body">
                     <label class="msgText hide" id="msgText12">No Record Found...</label>
-                    <label>Party Name</label>
+                    <label>
+                        Party Name 
+                        <span style="float: right"><a href="#div-partyMst" data-transition="flip" style="background-color: #1390cf; border-radius: 5px; padding: 2vmin">
+                            <img src="assets/img/plus.png" alt="Add Party"></a></span>
+                    </label>
                     <input type="text" id="party-srch-ldg" placeholder="Enter Party Name..." data-theme="a" data-type="search" onchange="serchtxt_clear(this,'1');" />
                     <center>
                         <div id="div-party-info-ldg" class="display-none">
+                            <p style="margin:0px;padding:0px" id="party-srch-ldg-add"></p>
                             <label style="display:inline">Ledger Balance:</label> <label id="lblLdgBal-" style="color:#137ab0;font-weight:bold;display:inline">00.00</label>
                         </div>
 
@@ -979,6 +1026,7 @@
                                 <td>
                                     <a data-rel="back"><div class="ui-btn ui-input-btn ui-corner-all ui-shadow  ui-mini" style="background: #1390cf" id="div-backparty" onclick="highlight_Control('div-backparty')"> <img src="assets/img/arrow-left.png" alt="prev"></div></a>
                                 </td>
+                                
                                 <td>
                                     <a href="#div-party-ldgr" data-transition="flip" onclick="ShowPartyLdgr()" class="hide" id="div-ldgrpt-"><div class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-mini" style="background: #1390cf"> <img src="assets/img/ldg-book.png" alt="Party Ledger"></div></a>
                                 </td>
@@ -1026,6 +1074,14 @@
                 <div id="pay-ser" class="ui-field-contain">
                     <label for="menupay">Payment Series:</label>
                     <select id="menupay" data-native-menu="false" class="filterable-select" onchange="SaveSer(this,'MNPY')"></select>
+                </div>
+                <div id="qttn-ser" class="ui-field-contain">
+                    <label for="menuqttn">Retail Quotation Series:</label>
+                    <select id="menuqttn" data-native-menu="false" class="filterable-select" onchange="SaveSer(this,'QTTN')"></select>
+                </div>
+                <div id="qtnw-ser" class="ui-field-contain">
+                    <label for="menuqtnw">Wholsale Quotation Series:</label>
+                    <select id="menuqtnw" data-native-menu="false" class="filterable-select" onchange="SaveSer(this,'QTNW')"></select>
                 </div>
                 <br />
                 <center>
@@ -1083,8 +1139,8 @@
                 </div>
                 <br />
                 <center>
-                    <a  style=" background: #1390cf;padding:5px 35px 5px 35px; color:white;border:none;cursor:pointer;display:inline-block" onclick="NewBill()">New Bill</a>
-                    <a  style="background: #1390cf;padding:5px 35px 5px 35px; color:white;border:none;cursor:pointer;display:inline-block;text-decoration:none;" href="#page-con">Back To Menu</a>
+                    <a  style=" background: #1390cf;padding:5px 35px 5px 35px; color:white;border:none;cursor:pointer;display:inline-block;margin-top:10px" onclick="NewBill()">New Bill</a>
+                    <a  style="background: #1390cf;padding:5px 35px 5px 35px; color:white;border:none;cursor:pointer;display:inline-block;text-decoration:none;margin-top:10px" href="#page-con">Back To Menu</a>
                 </center>
                 <br />
             </div>
@@ -1143,8 +1199,9 @@
             <h2 id="h2" style="color: white;">App Setting</h2>
         </div>
         <div role="main" class="ui-content">
-            <div class="body-with-shadow">
+            <div class="body-with-shadow" style="background-color: whitesmoke">
                 <center>
+                    <label id="appset-user" style="color:#137ab0"></label>
                     <table class="app-set-tbl">
                          <tr>
                             <td>
@@ -1166,9 +1223,17 @@
                                         <td><p>Release</p></td>
                                         <td><p id="appRelease"></p></td>
                                     </tr>
-                                    <tr>
+                                    <!--<tr>
                                         <td><p>Size</p></td>
                                         <td><p>:1.55MB</p></td>
+                                    </tr>-->
+                                     <tr>
+                                        <td><p>App Store Version</p></td>
+                                        <td><p id="appPlayVersion"></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p>Developed By</p></td>
+                                        <td><p>:Yashaswi Narkhedkar</p></td>
                                     </tr>
                                     <tr>
                                         <td><p>Powered By</p></td>
@@ -1224,6 +1289,10 @@
                                         <td><p>NodeId</p></td>
                                         <td><p id="p-node"></p></td>
                                     </tr>
+                                    <tr>
+                                        <td><p>Service Version</p></td>
+                                        <td><p id="ServiceVersion"></p></td>
+                                    </tr>
                                 </table>
                                 <hr />
                             </td>
@@ -1261,6 +1330,9 @@
                                         <td ><p>Set As Default Active Path : </p></td><td><input type="checkbox" id="def-path" onclick="SetDefaultPath()"></td>
                                     </tr>
                                     <tr>
+                                        <td ><p>Service compatibility alert : </p></td><td><input type="checkbox" id="ser-alert" onclick="SetServicealert()" checked="checked"></td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="2">
                                             <center><input type="button" onclick="SetConnectionGlobally()" value="Globally" class="tbl-btn-setting"/><input type="button" onclick="    SetConnectionLocally()" value="locally" class="tbl-btn-setting"/></center></td>
                                     </tr>
@@ -1296,174 +1368,194 @@
         <div role="main" class="ui-content">
             <div class="body-with-shadow">
                 <center>
-                    <div id="wrapper" class="wrapper">
-	                    <div id="scroller" class="scroller">
-                    <label id="curDate"></label>
-                    <table class='CSSTableGenerator'>
+                                          
+                             <table style="width:90%">
+                                 <tr>
+                                     <td style="width:70%"><input type="date" id="dtMIS" /></td>
+                                     <td style="width:30%"><div class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-mini" style="background: #1390cf;" onclick="GetMISData()"> <img src="assets/img/refresh.png" alt="Parameter"></div></td>
+                                 </tr>
+                             </table>
+                    <div id="wrapper" class="wrapper" style="margin-top:19vmin">
+	                    <div id="scroller" class="scroller">   
+                    <table class='CSSTableGenerator' >
                         <tr>
                             <td></td>
                             <td>
-                                <label>Day Cash</label>
+                                <label class="MISLbl">Day Cash</label>
                             </td>
                             <td>
-                                <label>Day Total</label>
+                                <label class="MISLbl">Day Total</label>
                             </td>
                             <td>
-                                <label>Month Total</label>
+                                <label class="MISLbl">Month Total</label>
                             </td>
                         </tr>
                         <tr>
-                           <td>
-                               <label>Sale</label>
+                           <td >
+                               <label class="MISLbl">Sale</label>
                            </td>
                             <td>
-                               <label id="saledc" class="MISLblAmt">0.00</label>
+                               <label id="saledc" class="MISLblAmt MISLbl" >0.00</label>
                            </td>
                             <td>
-                               <label id="saledt" class="MISLblAmt">0.00</label>
+                               <label id="saledt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="salemt" class="MISLblAmt">0.00</label>
+                               <label id="salemt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr>
                            <td>
-                               <label>DM-OW</label>
+                               <label class="MISLbl">DM-OW</label>
                            </td>
                             <td>
-                               <label id="dmodc" class="MISLblAmt">0.00</label>
+                               <label id="dmodc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="dmodt" class="MISLblAmt">0.00</label>
+                               <label id="dmodt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="dmomt" class="MISLblAmt">0.00</label>
+                               <label id="dmomt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr>
                            <td>
-                               <label>Sale Ret</label>
+                               <label class="MISLbl">Sale Ret</label>
                            </td>
                             <td>
-                               <label ="salerdc" class="MISLblAmt">0.00</label>
+                               <label ="salerdc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="salerdt" class="MISLblAmt">0.00</label>
+                               <label id="salerdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="salermt" class="MISLblAmt">0.00</label>
+                               <label id="salermt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                         <tr class="MISRow">
                            <td>
-                               <label>Sale Tot</label>
+                               <label class="MISLbl">Sale Tot</label>
                            </td>
                             <td>
-                               <label id="Tsaledc" class="MISLblAmt">0.00</label>
+                               <label id="Tsaledc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="Tsaledt" class="MISLblAmt">0.00</label>
+                               <label id="Tsaledt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="Tsalemt" class="MISLblAmt">0.00</label>
+                               <label id="Tsalemt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr>
                            <td>
-                               <label>Purchase</label>
+                               <label class="MISLbl">Purchase</label>
                            </td>
                             <td>
-                               <label id="puccdc" class="MISLblAmt">0.00</label>
+                               <label id="puccdc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="purcdt" class="MISLblAmt">0.00</label>
+                               <label id="purcdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="purcmt" class="MISLblAmt">0.00</label>
+                               <label id="purcmt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr>
                            <td>
-                               <label>DM-IN</label>
+                               <label class="MISLbl">DM-IN</label>
                            </td>
                             <td>
-                               <label id="dmidc" class="MISLblAmt">0.00</label>
+                               <label id="dmidc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="dmidt" class="MISLblAmt" >0.00</label>
+                               <label id="dmidt" class="MISLblAmt MISLbl" >0.00</label>
                            </td>
                             <td>
-                               <label id="dmimt" class="MISLblAmt">0.00</label>
+                               <label id="dmimt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                         <tr>
                            <td>
-                               <label>Purc Ret</label>
+                               <label class="MISLbl">Purc Ret</label>
                            </td>
                            <td>
-                               <label id="purcrdc" class="MISLblAmt">0.00</label>
+                               <label id="purcrdc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="purcrdt" class="MISLblAmt">0.00</label>
+                               <label id="purcrdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="purcrmt" class="MISLblAmt">0.00</label>
+                               <label id="purcrmt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr class="MISRow">
                            <td>
-                               <label>Purc Tot</label>
+                               <label class="MISLbl">Purc Tot</label>
                            </td>
                              <td>
-                               <label id="Tpurcdc" class="MISLblAmt"> 0.00</label>
+                               <label id="Tpurcdc" class="MISLblAmt MISLbl"> 0.00</label>
                            </td>
                             <td>
-                               <label id="Tpurcdt" class="MISLblAmt">0.00</label>
+                               <label id="Tpurcdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="Tpurcmt" class="MISLblAmt">0.00</label>
+                               <label id="Tpurcmt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr>
                            <td>
-                               <label>Receipt</label>
+                               <label class="MISLbl">Receipt</label>
                            </td>
                             <td>
-                               <label id="recdc" class="MISLblAmt">0.00</label>
+                               <label id="recdc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="recdt" class="MISLblAmt">0.00</label>
+                               <label id="recdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="recmt" class="MISLblAmt">0.00</label>
+                               <label id="recmt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                         <tr>
                            <td>
-                               <label>Payment</label>
+                               <label class="MISLbl">Payment</label>
                            </td>
                             <td>
-                               <label id="paydc" class="MISLblAmt">0.00</label>
+                               <label id="paydc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="paydt" class="MISLblAmt">0.00</label>
+                               <label id="paydt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="paymt" class="MISLblAmt">0.00</label>
+                               <label id="paymt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                          <tr  class="MISRow">
                            <td>
-                               <label>FinalAmt</label>
+                               <label class="MISLbl">FinalAmt</label>
                            </td>
                              <td>
-                               <label id="Fdc" class="MISLblAmt">0.00</label>
+                               <label id="Fdc" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="Fdt" class="MISLblAmt">0.00</label>
+                               <label id="Fdt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                             <td>
-                               <label id="Fmt" class="MISLblAmt">0.00</label>
+                               <label id="Fmt" class="MISLblAmt MISLbl">0.00</label>
+                           </td>
+                        </tr>
+                         <tr  class="MISRow">
+                           <td>
+                               <label class="MISLbl">Quotation</label>
+                           </td>
+                             <td>
+                               <label id="qtdc" class="MISLblAmt MISLbl">0.00</label>
+                           </td>
+                            <td>
+                               <label id="qtdt" class="MISLblAmt MISLbl">0.00</label>
+                           </td>
+                            <td>
+                               <label id="qtmt" class="MISLblAmt MISLbl">0.00</label>
                            </td>
                         </tr>
                         <tr>
@@ -1615,10 +1707,18 @@
                 <div id="Div9">
                     <label id="Label3" class="lbl-right-top" style="margin-top: -20px; margin-right: -7px;">Sales Rep</label>
                     <label class="msgText hide" id="Label4">No Record Found...</label>
-                    <label>Party Name</label>
+                    <label>Area Name</label>
+                    <input type="text" id="txtOrderArea" placeholder="Enter Area Name..." data-theme="a" data-type="search" onchange="serchtxt_clear(this,'10');" /><!---->
+
+                    <label>
+                        Party Name 
+                        <span style="float: right"><a href="#div-partyMst" data-transition="flip" style="background-color: #1390cf; border-radius: 5px; padding: 2vmin">
+                            <img src="assets/img/plus.png" alt="Add Party"></a></span>
+                    </label>
                     <input type="text" id="txtOrderParty" placeholder="Enter Party Name..." data-theme="a" onchange="serchtxt_clear(this,'8');" data-type="search" />
                     <center>
                         <div id="div10" class="display-none">
+                            <p style="margin:0px;padding:0px;" id="txtOrderParty-add"></p>
                             <label style="display:inline">Ledger Balance:</label> <label id="Label5" style="color:#137ab0;font-weight:bold;display:inline">00.00</label>
                         </div>
                         <table class="ui-content tbl-btn-nxt-rev" style="margin-left:-7vw;">
@@ -1645,7 +1745,7 @@
         </div>
         <!-- /popup -->
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
             <a id="A4" data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img " onclick="fun_nextItem()">next</a>
@@ -1669,6 +1769,10 @@
                 <br />
                 <div id="Div7">
                     <label class="msgText hide" id="lblOrdItm">No Record Found...</label>
+                    <center>
+                    <label id="itm-ordPname"></label>
+                    <p style="margin:0px;padding:0px;" id="itm-ordadd"></p>
+                    </center>
                     <label>Item Name</label>
                     <input type="text" id="txtOrdItem" placeholder="Enter Item Name..." data-theme="a" data-type="search" />
                     <a id="a1" href="#Item-Info-Search-Body" data-transition="flip" style="display: none"></a>
@@ -1703,7 +1807,7 @@
 
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
             <a data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img" onclick="fun_showCart()">next</a>
@@ -1740,7 +1844,7 @@
                     </select>                      
                        
                        <label>Amount</label>
-                       <input id="Rcpttxtamt" type="number" onblur=" GetPartyReceiptData('1');" />
+                       <input id="Rcpttxtamt" type="number"  /><!--onblur=" GetPartyReceiptData('1');-->
                       
                     <div id="chkdtl">
                        <label>Doc Number</label>
@@ -1774,7 +1878,7 @@
 
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
             <a data-transition="flip" href="#Receipt-part2" data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img">next</a>
@@ -1791,7 +1895,7 @@
             <center> <table style="margin-top:-5px;width:90%">
                 <tr>
                     <td><label>Amount</label></td>
-                    <td style="width:150px;"><input id="Rcpttxtamt1" type="number" onblur="GetPartyReceiptData('2');" /></td>
+                    <td style="width:150px;"><input id="Rcpttxtamt1" type="number"  /></td><!--onblur="GetPartyReceiptData('2');"-->
                     <td>
                         <label style="padding:0px;width:40px" id="lblchlselAllRcp">
                             <input type="checkbox" id="chlselAllRcp" onclick="SelectAllRcptVr()">
@@ -1832,7 +1936,7 @@
             </table>
             <hr />
             <div>
-                <div id="wrapper2" class="wrapper" style="margin-top: 65vw;">
+                <div id="wrapper2" class="wrapper" style="margin-top: 55vw;">
                     <div id="Div17" class="scroller">
                         <center>
                        
@@ -1845,7 +1949,7 @@
             </div>
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
+            <a onclick="BackButton()" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
             <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
             <a href="#divsavebtn" data-rel="popup" data-transition="flip" data-position-to="window" data-icon="check" data-iconpos="notext" class="footer-img">Save</a>
             <a onclick="fun_cancel()" data-icon="action" data-iconpos="notext" class="footer-img">Exit</a>
@@ -1877,93 +1981,85 @@
         </div>
     </div>
 
-    <!--/code by vivek page term and condition-->
-    <div data-role="page" id="Term-condition" class="app-set-tbl">
-        <!-- /header -->
-
-        <!-- /content -->
-        <div role="main" id="Div18" class="ui-content">
-            <center> 
-                <div  style="width: 1000px; box-sizing : border-box  ; text-align: center" class=" body-with-shadow.close"  >
-               
-            
-                <table style="text-align: center; " >
-                    <tr style="width: auto; text-align:center";>
-                        <td align="center" >
-                            <h5>-: Terms and Condition :-</h5>
-                        </td>
-                        
-                    </tr>
-                    <tr style="width: auto; text-align: center" id="Div19" >
-
-                        
-                        <td style="text-align: left" >
-
-                            <h6>1:- Do Not make Illegal copies of this Software.  The use of Software is completely restricted to the computer on which it is installed and for the Firm / Company / Individual for which it is developed.(Non-Transferrable)</h6>
-                            <h6>2:- We are purely a software firm and this software utility is develop for you on job work basis.</h6>
-                            <h6>3:- S/w. user rights once sold should not be returned whether you continue the use of the S/w. or Stop.</h6>
-
-                            <h6>4:- Our liability is restricted to Installation & Training on Software Application / Usages.</h6>
-                            <h6>5:- We shall be responsible & liable to answer/solve any queries of our clients only and which is limited to software application / Usages.</h6>
-                            <h6>6:- We shall alone has the exclusive rights to collect Lic Ren Chrgs of the software from our clients, as per the Lic Ren chrgs option selected by the client.</h6>
-                            <h6>7:- For any unpaid Lic Ren Chrgs and / or Installments, we shall has the right to lock the Software of the client.  The software may not work further and the paid amount will be forfeited.</h6>
-                             <h6>8:- No responsibility towards any Data Loss, System Failure, Erroneous Feedings / Invoicing.</h6>
-                             <h6>9:- Contact NOs: 0712-3294004, 3240909, 9370707169, 59, 49</h6>
-                             <h6>10:- We shall not respond to any calls if the problems are not related to us.</h6>
-                             <h6>11:- For any special / tailor made requirements / changes in software, client has to pay extra amount as and when decided.</h6>
-                             <h6>12:- The Product Information Service is not necessarily part of Software. It is being offered as an extra service.  The Content may or may not be fully informative and correct.  </h6>
-                             <h6>13:- Product Information Service can be withdraw any time out of our own free will....".  The up gradation of Product's Information will be under sole discretion of software provider.</h6>
-                             <h6>14:- Subject to Nagpur Jurisdiction Only.</h6>
-                             <h6></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style ="height :10px" >
-                           <img id="Img12" src="assets/img/exit-button.png" alt="Canecl" style ="height :100px" onclick="closewindow() " onmouseover='mOver(this)' onmouseout='mOut(this)'  >
-
-                        </td>
-                    </tr>
-
-                </table>
-            
-
-            </div>
-
-           </center>
+    <div data-role="page" id="div-partyMst" class="jqm-demos">
+        <div data-role="header" data-position="fixed" class="jqm-header">
+            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="margin-left: 10px; background-color: white;">Back</a>
+            <img src="assets/img/green.gif" alt="Online" class="ui-btn-right alert-imgOn activeImg">
+            <h2 id="h9" style="color: white;">Party Master</h2>
         </div>
-
+        <div role="main" class="ui-content">
+            <div class="body-with-shadow">
+                <center>
+                    <table >
+                        <tr>                            
+                            <td colspan="2"> <div class="ui-field-contain" style="margin:0px;">
+                            <select name="ptype" id="ptype">
+                             <option value="C">Customer</option>
+                             <option value="S">Supplier</option>
+                            </select>
+                             </div>  </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Name </label>
+                            </td>
+                            <td><input type="text" id="Ntxtparty" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Area </label>
+                            </td>
+                            <td><input type="text" id="NtxtArea"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Mobile No  </label>
+                            </td>
+                            <td><input type="number" id="NtxtMob" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Address  </label>
+                            </td>
+                            <td><textarea id="NtxtAdd" style="resize: none;"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="div16" style="background-color:#1390cf;text-decoration:none;color:white" class="ui-btn ui-input-btn ui-corner-all ui-shadow " onclick="SaveAcpmst()">Save<input type="button" value="Save"  style="height:40px" ></div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
             <p style="font-size: 12px;">Copyright &copy; - All Rights Reserved  www.goyalonline.com </p>
-
         </div>
     </div>
 
-    <!-- <div data-role="page" id="DisplaySetting" class="jqm-demos">
-        <div data-role="header" data-position="fixed" class="jqm-header" >
-            <img src="assets/img/green.gif" alt="Online" class="ui-btn-left alert-imgOn activeImg">
-            <h2 id="H9" style="color: white;">Display Setting</h2>
+    <div data-role="page" id="div-flag" class="jqm-demos">
+        <div data-role="header" data-position="fixed" class="jqm-header">
+            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="margin-left: 10px; background-color: white;">Back</a>
+            <img src="assets/img/green.gif" alt="Online" class="ui-btn-right alert-imgOn activeImg">
+            <h2 id="h10" style="color: white;">Flags</h2>
         </div>
         <div role="main" class="ui-content">
-            <center>
-                  
-                          <div class="ui-field-contain body-with-shadow">
-                            <label for="fontsize">Font Size:</label>
-                             <select name="fontsize" id="fontsize" onchange=" ChangeFontsize()">
-                                 <option value="5">5</option>
-                             <option value="6">6</option>
-                             <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                             </div>                          
-                    
-            </center>
+            <div class="body-with-shadow">
+                <br />
+                <center>
+                    <div id="tblflag">
+                        
+                    </div>
+                </center>
+                <br />
+            </div>
         </div>
         <div data-role="footer" data-position="fixed" class="my-footer">
-            <a data-rel="back" data-icon="carat-l" data-iconpos="notext" style="float: left;" class="footer-img">Back</a>
-            <a onclick="homePage()" data-icon="home" data-iconpos="notext" class="footer-img">home</a>
-            <a data-rel="back"  data-icon="carat-r" data-iconpos="notext" style="float: right;" class="footer-img">next</a>
+            <p style="font-size: 12px;">Copyright &copy; - All Rights Reserved  www.goyalonline.com </p>
         </div>
-    </div>-->
+    </div>
 
+
+    
 </body>
 </html>
