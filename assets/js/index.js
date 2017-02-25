@@ -165,7 +165,7 @@ function cliencode_check() {
         window.location = "index01.html";
     }
     else {
-        window.location = "HomePage1.html";
+        window.location = "Retailer.html";
 
     }
 }
