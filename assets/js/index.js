@@ -165,7 +165,13 @@ function cliencode_check() {
         window.location = "index01.html";
     }
     else {
-        window.location = "Retailer.html";
+        var sp = clientCode.substring(0, 1);
+        if (sp == "2") {
+            window.location = "Retailer.html";
+        }
+        else {
+            window.location = "SRepresentation.html"
+        }
 
     }
 }
